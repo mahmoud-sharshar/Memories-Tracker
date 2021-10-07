@@ -1,6 +1,7 @@
 import type { AWS } from '@serverless/typescript';
 
 import hello from '@functions/hello';
+import Auth from '@functions/auth0Authorizer';
 
 const serverlessConfiguration: AWS = {
   service: 'backend',
@@ -75,7 +76,7 @@ const serverlessConfiguration: AWS = {
     }
   },
   // import the function via paths
-  functions: { hello },
+  functions: { hello, Auth },
   resources: {
     Resources: {
       GatewayResponseDefault4XX: {
@@ -177,3 +178,7 @@ const serverlessConfiguration: AWS = {
 };
 
 module.exports = serverlessConfiguration;
+
+
+
+/* eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlJVSkVRakJETlRJelJFWXdPREUxTjBKR09FSkVRVFF5T0RoRFFVVkdRME13UWprM1JFTXhOdyJ9.eyJpc3MiOiJodHRwczovL2Rldi1zaGFyc2hhci5ldS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTIxMzU5OTYwNTc2MTYxNDgwNDkiLCJhdWQiOiJUSFpyeXRpeVFlNDNEZDl0bUlmRHJJWDRZZldIYmJBdyIsImlhdCI6MTYzMzYzMTM1MSwiZXhwIjoxNjM3MjMxMzUxLCJhdF9oYXNoIjoiSkpBbDVGN2J3dHpMRkZfVW5VTnpYdyIsIm5vbmNlIjoiMmpjanV4bmxHSXg0SEtELXhpX1FITXJZbm5sd0tsT2EifQ.EeZuLtH2XW54yrkvlRkuts3EIWeMvqMPCGR_xv_AY2A3yx4AomGNZZv8NmGt_RaSLbk5e_FnOduyP74FeY8mTwKuu3DKybQC6TUXaONNuqviVvo31rscq-9WgBPoC9RgdUpQx4VskXEw_TMjtGZQr4Aj1VFN6iGNbhYxVfK-I6by3ITTihSOo-_a85h04pNZxE7SDD8C2RC_F2AmIzHbLSbWcBg2Tb4yhineZ3TTnkbc4kQdaZYtHOFIAboCS-DDPUeY1rAUAEg2sdLhmLKGQ4_zyK_zX6hxSbXUT7klFHljvbUsvEgAk9ifeEgJwYTalXfKUC30YLFynqaedN5xQw*/
