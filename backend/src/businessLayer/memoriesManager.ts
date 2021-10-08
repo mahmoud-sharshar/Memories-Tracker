@@ -27,7 +27,7 @@ export const createNewMemory = async (
 
 export const deleteMemory = async (userId: string, memoryId: string) => {
   if (!(await isMemoryExist(userId, memoryId)))
-    throw new Error("Requested todo doesn't exist");
+    throw new Error("Requested memory doesn't exist");
 
   return memoryAccess.deleteMemory(userId, memoryId);
 };
@@ -38,7 +38,7 @@ export const updateMemory = async (
   memoryRequest: MemoryRequest
 ) => {
   if (!(await isMemoryExist(userId, memoryId)))
-    throw new Error("Requested todo doesn't exist");
+    throw new Error("Requested memory doesn't exist");
   return memoryAccess.updateMemory(userId, memoryId, memoryRequest);
 };
 
