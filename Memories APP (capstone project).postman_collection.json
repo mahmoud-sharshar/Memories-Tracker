@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "97e4c0a0-51e9-4d7d-83a6-ec4517bf8d74",
+		"name": "Memories APP (capstone project)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all Memories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/memories",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"memories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Memory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test Memory\",\r\n    \"caption\": \"this memory is for testing\",\r\n    \"location\": \"Alexandria\",\r\n    \"feeling\": \"Happy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/memories",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"memories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update existing Memory",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test Edit Memory\",\r\n    \"caption\": \"this memory is for testing edit memory\",\r\n    \"location\": \"Cairo\",\r\n    \"feeling\": \"Excited\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/memories/c6d7ac77-0569-4314-a255-86c20e8a10ec",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"memories",
+						"c6d7ac77-0569-4314-a255-86c20e8a10ec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete existing Memory",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/memories/c6d7ac77-0569-4314-a255-86c20e8a10ec",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"memories",
+						"c6d7ac77-0569-4314-a255-86c20e8a10ec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Attachment URL",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/memories/22f1882a-b1b4-4390-84c6-24075a02b5ce/attachment",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"memories",
+						"22f1882a-b1b4-4390-84c6-24075a02b5ce",
+						"attachment"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlJVSkVRakJETlRJelJFWXdPREUxTjBKR09FSkVRVFF5T0RoRFFVVkdRME13UWprM1JFTXhOdyJ9.eyJpc3MiOiJodHRwczovL2Rldi1zaGFyc2hhci5ldS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTIxMzU5OTYwNTc2MTYxNDgwNDkiLCJhdWQiOiJUSFpyeXRpeVFlNDNEZDl0bUlmRHJJWDRZZldIYmJBdyIsImlhdCI6MTYzMzYzMTM1MSwiZXhwIjoxNjM3MjMxMzUxLCJhdF9oYXNoIjoiSkpBbDVGN2J3dHpMRkZfVW5VTnpYdyIsIm5vbmNlIjoiMmpjanV4bmxHSXg0SEtELXhpX1FITXJZbm5sd0tsT2EifQ.EeZuLtH2XW54yrkvlRkuts3EIWeMvqMPCGR_xv_AY2A3yx4AomGNZZv8NmGt_RaSLbk5e_FnOduyP74FeY8mTwKuu3DKybQC6TUXaONNuqviVvo31rscq-9WgBPoC9RgdUpQx4VskXEw_TMjtGZQr4Aj1VFN6iGNbhYxVfK-I6by3ITTihSOo-_a85h04pNZxE7SDD8C2RC_F2AmIzHbLSbWcBg2Tb4yhineZ3TTnkbc4kQdaZYtHOFIAboCS-DDPUeY1rAUAEg2sdLhmLKGQ4_zyK_zX6hxSbXUT7klFHljvbUsvEgAk9ifeEgJwYTalXfKUC30YLFynqaedN5xQw",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://h1eg3n3ghb.execute-api.us-east-1.amazonaws.com/dev"
+		}
+	]
+}
