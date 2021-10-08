@@ -41,7 +41,8 @@ const serverlessConfiguration: AWS = {
   plugins: [
     "serverless-esbuild",
     "serverless-iam-roles-per-function",
-    /*'serverless-plugin-tracing',*/ "serverless-dynamodb-local",
+    "serverless-plugin-tracing",
+    "serverless-dynamodb-local",
     "serverless-s3-local",
     "serverless-offline",
   ],
@@ -57,15 +58,16 @@ const serverlessConfiguration: AWS = {
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
       MEMORIES_TABLE: "Memories-${self:provider.stage}",
       MEMORIES_CREATED_AT_INDEX: "CreatedAtIndex-${self:provider.stage}",
-      ATTACHMENT_S3_BUCKET: "todos-attachments-bucket-${self:provider.stage}",
+      ATTACHMENT_S3_BUCKET:
+        "memories-attachments-bucket-${self:provider.stage}",
       SIGNED_URL_EXPIRATION: "300",
-      // X_AMZN_TRACE_ID: '2021'
+      X_AMZN_TRACE_ID: "2021",
     },
     lambdaHashingVersion: "20201221",
-    // tracing: {
-    //   lambda: true,
-    //   apiGateway: true
-    // },
+    tracing: {
+      lambda: true,
+      apiGateway: true,
+    },
     logs: {
       // Enable API Gateway logs
       restApi: true,
@@ -73,11 +75,11 @@ const serverlessConfiguration: AWS = {
     iam: {
       role: {
         statements: [
-          // {
-          //   Effect: 'Allow',
-          //   Action: ['xray:PutTelemetryRecords', 'xray:PutTraceSegments'],
-          //   Resource: '*'
-          // },
+          {
+            Effect: "Allow",
+            Action: ["xray:PutTelemetryRecords", "xray:PutTraceSegments"],
+            Resource: "*",
+          },
           {
             Effect: "Allow",
             Action: ["codedeploy:*"],
@@ -169,8 +171,8 @@ const serverlessConfiguration: AWS = {
           CorsConfiguration: {
             CorsRules: [
               {
-                AllowedOrigins: "*",
-                AllowedHeaders: "*",
+                AllowedOrigins: ["*"],
+                AllowedHeaders: ["*"],
                 AllowedMethods: ["GET", "PUT", "POST", "DELETE", "HEAD"],
                 MaxAge: 3000,
               },
@@ -179,7 +181,7 @@ const serverlessConfiguration: AWS = {
         },
       },
       BucketPolicy: {
-        Type: " AWS::S3::BucketPolicy",
+        Type: "AWS::S3::BucketPolicy",
         Properties: {
           PolicyDocument: {
             Id: "AttachmentBucket",
@@ -192,8 +194,8 @@ const serverlessConfiguration: AWS = {
               Resource:
                 "arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*",
             },
-            Bucket: "!Ref MemoriesAttachmentsBucket",
           },
+          Bucket: { Ref: "MemoriesAttachmentsBucket" },
         },
       },
     },
