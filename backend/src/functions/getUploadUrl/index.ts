@@ -19,5 +19,11 @@ export default {
       Resource:
         "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.MEMORIES_TABLE}",
     },
+    {
+      Effect: "Allow",
+      Action: ["s3:PutObject"],
+      Resource:
+        "arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*",
+    },
   ],
 };
