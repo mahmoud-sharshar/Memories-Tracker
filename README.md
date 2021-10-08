@@ -5,6 +5,19 @@
 - This is the capstone project of Cloud Developer Nanodegree offered by Udacity. 
 - This application will allow creating/removing/updating/fetching memories items. Each memory item can optionally have an attachment image. Each user only has access to memories items that he/she has created.
 
+## Tech Stack
+  - Backend
+    - Serverless Frameworks for local development
+    - Typescript
+    - Nodejs
+    - AWS Lambda
+    - AWS DynamoDB
+    - AWS S3
+  - Frontend
+    - Typescript
+    - React
+    - Semantic UI 
+
 ## Prerequisites
 
 * <a href="https://manage.auth0.com/" target="_blank">Auth0 account</a>
@@ -56,4 +69,4 @@ npm run start
 This should start a development server with the React application that will interact with the serverless backend application.
 
 # Postman collection
-You can find a Postman collection of the backend API in this project root folder.
+You can find a Postman collection of the backend API [here](https://github.com/mahmoud-sharshar/Memories-Tracker/blob/main/Memories%20APP%20(capstone%20project).postman_collection.json).
